@@ -12,13 +12,10 @@ pipeline:
       - '/drone/maven-repo:/root/.m2'
   public-dev:
     image: plugins/docker
-    secrets:
-      - docker_username
-      - docker_password
     volumes:
       - '/var/run/docker.sock:/var/run/docker.sock'
     commands:
-      - 'docker login -u 潘金天1992 -p panjintian1992 registry.cn-beijing.aliyuncs.com'
+      - 'docker login --username=潘金天1992 -p panjintian1992 registry.cn-beijing.aliyuncs.com'
       - 'docker build --rm  -t demo .'
       - 'docker tag demo registry.cn-beijing.aliyuncs.com/frode/banana:master'
       - 'docker push registry.cn-beijing.aliyuncs.com/frode/banana:master'
