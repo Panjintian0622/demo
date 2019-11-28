@@ -28,7 +28,7 @@ pipeline:
     secrets:
       - rancher_access_key
       - rancher_secret_key
-    service: tengyue360/eureka-server
+    service: demo/demo
     docker_image: registry-vpc.cn-beijing.aliyuncs.com/frode/banana:master
     start_first: false
     confirm: true
