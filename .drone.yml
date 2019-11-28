@@ -11,7 +11,7 @@ pipeline:
     volumes:
       - '/drone/maven-repo:/root/.m2'
   public-dev:
-    image: registry.cn-beijing.aliyuncs.com/tools/drone-docker
+    image: plugins/docker
     secrets:
       - docker_username
       - docker_password
@@ -26,7 +26,7 @@ pipeline:
       branch: master
       event: push
   rancher-online:
-    image: registry.cn-beijing.aliyuncs.com/tools/drone-rancher
+    image: plugins/docker
     url: 'http://182.92.189.28:8080'
     secrets:
       - rancher_access_key
