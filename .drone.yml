@@ -25,9 +25,8 @@ pipeline:
   rancher-online:
     image: plugins/docker
     url: 'http://182.92.189.28:8080'
-    secrets:
-      - rancher_access_key
-      - rancher_secret_key
+    access_key: 9DC5B73C654423356E28
+    secret_key: 1ZR2QFbNq38zQK9aVNSEwQGsAXEHL2RrMueMt2GN
     service: demo/demo
     docker_image: registry-vpc.cn-beijing.aliyuncs.com/frode/banana:master
     start_first: false
