@@ -1,0 +1,41 @@
+kind: pipeline
+workspace:
+  base: /drone/src
+  path: eureka-server
+pipeline:
+  build:
+    image: 'maven:3.5.2-jdk-8'
+    privileged: true
+    commands:
+      - 'mvn clean package'
+    volumes:
+      - '/drone/maven-repo:/root/.m2'
+  public-dev:
+    image: registry.cn-beijing.aliyuncs.com/tools/drone-docker
+    secrets:
+      - docker_username
+      - docker_password
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+    commands:
+      - 'docker login -u 潘金天1992 -p panjintian1992 registry.cn-beijing.aliyuncs.com'
+      - 'docker build --rm  -t demo .'
+      - 'docker tag demo registry.cn-beijing.aliyuncs.com/frode/banana:master'
+      - 'docker push registry.cn-beijing.aliyuncs.com/frode/banana:master'
+    when:
+      branch: master
+      event: push
+  rancher-online:
+    image: registry.cn-beijing.aliyuncs.com/tools/drone-rancher
+    url: 'http://182.92.189.28:8080'
+    secrets:
+      - rancher_access_key
+      - rancher_secret_key
+    service: tengyue360/eureka-server
+    docker_image: registry-vpc.cn-beijing.aliyuncs.com/frode/banana:master
+    start_first: false
+    confirm: true
+    timeout: 180
+    when:
+      branch: master
+      event: push
