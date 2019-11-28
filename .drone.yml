@@ -15,7 +15,7 @@ pipeline:
     volumes:
       - '/var/run/docker.sock:/var/run/docker.sock'
     commands:
-      - 'docker login --username=潘金天1992 --password=panjintian1992 registry.cn-beijing.aliyuncs.com'
+      - 'docker login --username=潘金天1992 --password=xinyoulingxiyidiantong. registry.cn-beijing.aliyuncs.com'
       - 'docker build --rm  -t demo .'
       - 'docker tag demo registry.cn-beijing.aliyuncs.com/frode/banana:master'
       - 'docker push registry.cn-beijing.aliyuncs.com/frode/banana:master'
