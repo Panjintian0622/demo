@@ -131,4 +131,11 @@
         </plugins>
     </build>
 
+    <repositories>
+        <repository>
+            <id>aliyun</id>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
+
 </project>
