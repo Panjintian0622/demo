@@ -4,6 +4,6 @@ FROM java:8
 ADD target/*.jar app.jar
 RUN bash -c 'touch /app.jar'
 # 开放8000端口
-EXPOSE 8000
+EXPOSE 8001
 # 配置容器启动后执行的命令
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-Dfile.encoding=UTF8","-Duser.timezone=GMT+08","-Xmx600m","-jar","/app.jar"]
